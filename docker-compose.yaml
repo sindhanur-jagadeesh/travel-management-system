@@ -1,0 +1,20 @@
+version: '3.8' # Specifies the compose file version
+
+services:
+  # Define the frontend service
+  frontend:
+    # Tell Docker Compose to build the image from the Dockerfile in the current directory
+    build: .
+    
+    # (Optional) A friendly name for your container
+    container_name: travel_frontend_app
+    
+    # (Optional) Give the image a local name
+    image: travel-frontend:local
+    
+    ports:
+      # Map port 8080 on your host machine to port 80 inside the container (where Nginx is running)
+      - "8080:80"
+      
+    # Automatically restart the container if it stops, unless you manually stop it
+    restart: unless-stopped
